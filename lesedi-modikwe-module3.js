@@ -178,3 +178,25 @@ console.log(`${12}, ${NaN == NaN}`)
 
 // 13 false because NaN cannnot be equal to itself it represents an invalid or undefined numeric result.
 console.log(`${13}, ${NaN === NaN}`)
+
+// 14 true because object uses different comparison rule from == and === which makes two NaN values to be the same 
+console.log(`${14}, ${Object.is(NaN, NaN)}`)
+
+// 15 false because positive zero cannot be = to negative zero 
+console.log(`${15}, ${+0 === -0}`) // i was wrong here, the answer is true because when using ===, +0 and -0 are considerd equal
+
+// 16 false because +0 and -0 are not the same 
+console.log(`${16}, ${Object.is(+0, -0)}`)
+
+// 17 true because the values are the same 
+console.log(`${17}, ${[1,2,3] == "1,2,3"}`)
+
+// 18 true because an empty array will be 0 which is false 
+console.log(`${18}, ${[] == false}`)
+
+// 19 true because an empty array will be 0 
+console.log(`${19}, ${ [] == 0}`)
+
+//20  true because the value in an array is zero and false is also 0
+console.log(`${20}, ${[0] == false}`)
+
