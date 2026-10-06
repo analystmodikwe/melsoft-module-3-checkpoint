@@ -46,6 +46,9 @@ let item3VAT = item3
     item3VAT *= 15/100;
     item3 -= item3VAT
    
-
+// a function to comment out the section header
+function section(title) {
+  console.log(`\n===== ${title} =====`);
+};
 
 
