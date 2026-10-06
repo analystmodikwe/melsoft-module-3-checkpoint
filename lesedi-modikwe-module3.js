@@ -617,5 +617,36 @@ console.log("filter result:", filtered); // [ 'a', 'c', 'd' ]
 //  will comeback to it 
 
 
+section("Challenge 7 - Real-World Banking Calculator");
 
+// Formatting settings, reused for every currency value:
+// always show exactly 2 decimals, and "en-US" gives commas for thousands (31,286.15)
+const money = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+
+// ======================================================
+// Scenario 1 - Savings interest
+// ======================================================
+section("Scenario 1 - Savings interest");
+
+let P = 25000;   // starting deposit in rand
+let r = 0.075;   // 7.5% annual interest as a decimal
+let n = 12;      // compounded 12 times a year (monthly)
+let t = 3;       // number of years
+
+// Formula: P * (1 + r/n) ^ (n*t)
+// ** is the exponent operator, and the brackets make sure (1 + r/n) is worked out first
+let finalBalance = P * (1 + r / n) ** (n * t);
+
+// Total interest = what you end up with minus what you put in
+let interestEarned = finalBalance - P;
+
+// Effective annual rate: the single yearly growth rate that turns P into finalBalance.
+// (finalBalance / P) is the total growth, ** (1 / t) takes the "per year" root,
+// minus 1 leaves only the growth, and * 100 turns it into a percentage
+let effectiveRate = ((finalBalance / P) ** (1 / t) - 1) * 100;
+
+// toLocaleString adds the commas and the 2 decimals
+console.log("Final balance: R " + finalBalance.toLocaleString("en-US", money));     // R 31,286.15
+console.log("Interest earned: R " + interestEarned.toLocaleString("en-US", money)); // R 6,286.15
+console.log("Effective annual rate: " + effectiveRate.toFixed(2) + "%");            // 7.76%
 
