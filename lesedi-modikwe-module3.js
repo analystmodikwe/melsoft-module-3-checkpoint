@@ -57,7 +57,9 @@ let confirmedEmail = "user@example.com";
 // four comparison operators that make sence here
 let isOld = user >= 18 // the user will be exactely 18 or older 
 let passwordValidation = password.length >= 8 // the password will be at least 8 characters long
+let passwordNotLong = password.length <= 25 //the password wont be more than 25 characters
 let userEmail = email === confirmedEmail; // the email and confirmed email will be exactly the same
+let passwordNotEmail = password !== email; // strictly not equal, password and email wont be the same
 
 
 
