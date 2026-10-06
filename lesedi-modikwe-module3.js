@@ -350,12 +350,35 @@ console.log("Test 1 maxResults:", maxResults1);             // 10
 console.log("Test 1 lastLogin:", lastLogin1);               // Never
 console.log("Test 1 notificationCount:", notificationCount1); // 0
 
-//  test 2
+section("test2")
+//  test 2  notificationCount is 0 and theme is "
 
+let user2 = {
+    displayName: "Lesedi",
+    theme: "",              // empty string is falsy
+    maxResults: 25,
+    lastLogin: "2026-10-05",
+    notificationCount: 0    // zero is falsy, but it is a real value
+};
 
+let displayName2 = user2.displayName || "Guest User";
+let theme2 = user2.theme || "light";                   // "" is falsy -> replaced with "light"
+let maxResults2 = user2.maxResults || 10;
+let lastLogin2 = user2.lastLogin ?? "Never";
+let notificationCount2 = user2.notificationCount ?? 0; // 0 is NOT null/undefined -> stays 0
 
+console.log("Test 2 displayName:", displayName2);           // Lesedi
+console.log("Test 2 theme:", theme2);                       // light
+console.log("Test 2 maxResults:", maxResults2);             // 25
+console.log("Test 2 lastLogin:", lastLogin2);               // 2026-10-05
+console.log("Test 2 notificationCount:", notificationCount2); // 0
 
-
+// WHY ?? and || behave differently:
+// || treats ANY falsy value as "missing", so theme "" became "light".
+// That is fine for theme, because an empty theme is not useful.
+// ?? only treats null and undefined as "missing", so notificationCount
+// stayed 0. Zero is a valid count (no notifications), and using || here
+// would wrongly replace it with the default.
 
 
 
