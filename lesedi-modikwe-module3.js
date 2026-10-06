@@ -45,6 +45,29 @@ let item3Discount = item3;
 let item3VAT = item3
     item3VAT *= 15/100;
     item3 -= item3VAT
+
+// Example scenario: Validate a signup form. User must be at least 18 years old, password must
+// have at least 8 characters, and confirmed email must exactly match the typed email. Show all
+// four comparison operators that make sense here
+let user = 18;
+let password = "thokoza123456789";
+let email = "user@example.com";
+let confirmedEmail = "user@example.com";
+
+// four comparison operators that make sence here
+let isOld = user >= 18 // the user will be exactely 18 or older 
+let passwordValidation = password.length >= 8 // the password will be at least 8 characters long
+let userEmail = email === confirmedEmail; // the email and confirmed email will be exactly the same
+
+
+
+
+
+
+
+
+
+
    
 // a function to comment out the section header
 function section(title) {
