@@ -685,3 +685,28 @@ let fee4 = balance4 < 1000 ? 25 : balance4 < 5000 ? 50 : balance4 < 25000 ? 75 :
 let annualFee4 = fee4 * 12;
 console.log("Balance R " + balance4.toLocaleString("en-US", money) + " -> monthly fee R" + fee4 + ", yearly R" + annualFee4);
 // Balance R 50,000.00 -> monthly fee R0, yearly R0
+
+
+// Scenario 3 - Multi-currency transfer
+section("Scenario 3 - Multi-currency transfer");
+
+let rate = 18.42; // R18.42 = $1
+
+// Floating-point care: convert the rand amount to whole CENTS first.
+// Integers are stored exactly, so money maths on cents is safe.
+// Math.round cleans up any tiny error from the multiplication.
+let amountCents = Math.round(15750.33 * 100); // 1575033 cents
+
+// 2.5% commission. Multiplying by 25 and dividing by 1000 avoids using 0.025,
+// which cannot be stored exactly in binary. The result is rounded to whole cents.
+let commissionCents = Math.round(amountCents * 25 / 1000); // 39376 cents
+
+let afterCommissionCents = amountCents - commissionCents; // 1535657 cents
+
+// Convert to dollars: divide the rand cents by the rate, and round to whole US cents
+let usdCents = Math.round(afterCommissionCents / rate); // 83369 cents
+
+// Only at the very end, divide by 100 to get back to rand and dollars
+console.log("Commission: R " + (commissionCents / 100).toLocaleString("en-US", money));         // R 393.76
+console.log("After commission: R " + (afterCommissionCents / 100).toLocaleString("en-US", money)); // R 15,356.57
+console.log("USD received: $" + (usdCents / 100).toLocaleString("en-US", money));  
