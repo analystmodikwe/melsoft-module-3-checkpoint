@@ -131,11 +131,31 @@ console.log(year2++)
 //  no its not, nested ternary can make the code hard to read and understand, especially when there are multiple conditions. It is better to use if-else statements or switch cases for complex logic to improve readability and maintainability.
 
 
-
-   
-// a function to comment out the section header
+// a function to comment out the section header for readability
 function section(title) {
   console.log(`\n===== ${title} =====`);
 };
 
+//  Predict and verify (6 marks)
+// For each of the 20 comparisons below, write a comment with your PREDICTION BEFORE you
+// run it. Then console.log the actual result. For each case, add a one-line note explaining WHY
+section("Part A")
+//1. true because its equality, their data types are not checked and false defaults to 0
+console.log(0 == false);
 
+// 2 false because its identity it expects each and everything to be equal
+console.log(0 === false);
+
+// 3 true, because its not a number and its an empty string which equates to zero
+console.log("" == 0);
+
+// 4 false, because its not a number and its an empty string which equates to zero but === will check both the value and datatype
+console.log("" === 0);
+
+// 5 true because the value is is the same even though the data type is different == does not not check data type
+console.log("0" == 0);
+
+// 6 false because the value is the same but  the data type is different and === expects value and data type to be the same 
+console.log("0" === 0);
+
+// 7 true because 
