@@ -5,10 +5,10 @@ let gross = 45000
 let medicalAid = 2500
 
 let tax= 25/100
-tax *= gross
+tax = tax * gross
 
 let uif= 1 / 100
-uif *= gross
+uif = uif * gross
 
 let net = gross - tax - uif - medicalAid;
 console.log(net)
