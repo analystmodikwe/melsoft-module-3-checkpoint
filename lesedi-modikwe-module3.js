@@ -90,8 +90,12 @@ let isDarkMode = true; // the darkmode is on (true)
 
     isDarkMode = !isDarkMode //now its back on (true)
 
+// Ternary / Conditional
+// Example scenario: Display a membership badge: 'Premium Member' if membershipType is
+// 'premium', 'Free Member' otherwise. Then nest a ternary to also handle 'trial' as 'Trial
+// Member'
 
-
+let membershipBadge = PremiumMemeber ? "Premium" : TrailMember ? "trail" : "Free Memeber";
 
 
 
