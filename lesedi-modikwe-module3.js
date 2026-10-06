@@ -865,3 +865,16 @@ console.log("Total: R " + (finalTotalCents / 100).toLocaleString("en-US", money)
 // in my banking calculator I converted to cents first, rounded once, and
 // only divided by 100 when displaying the result.
 
+// 5. What was the hardest concept in Module 3, and what made it click?
+
+// (Replace this with your own truth.) The hardest thing for me was the
+// difference between prefix and postfix, ++x versus x++, and later the
+// ~ with & trick for removing a permission. I kept reading the lines and
+// thinking I understood them, then the output came out different from what I
+// predicted. What made it click was stopping to write out the values step
+// by step, in binary for the permissions and as a count variable for the
+// increment, and tracing each line by hand before running the code. Once I
+// did that a few times I could see exactly what changed at each step. For
+// the next cohort, I think it would help to show the step-by-step trace for
+// every operator first, and ask students to predict the output before
+// running it.
