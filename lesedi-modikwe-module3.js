@@ -314,4 +314,36 @@ console.log("15:", "5" - 3 + 2);
 // mixing + with string joining. They also protect against bugs if someone
 // edits the expression later and misremembers the precedence order.
 
+section("Challenge 4 — Ternary and Short-Circuit Patterns")
+section("PART A")
+let Grade=95 //A
+    Grade=82 //B
+    Grade=73  //C
+    Grade=65 //D
+    Grade=54 //E
+    Grade=42 //F
+    Grade=0 //F
+    Grade=100 //A
+console.log(
+    Grade >=90 ? "A" : 
+    Grade >=80 ? "B" :
+    Grade >= 70 ? "C" :
+    Grade >= 60 ? "D" :
+    Grade >= 50 ? "E" :
+    "F" 
+);
+
+section("Part B");
+
+
+
+
+
+
+
+
+
+
+
+
 
