@@ -200,3 +200,40 @@ console.log(`${19}, ${ [] == 0}`)
 //20  true because the value in an array is zero and false is also 0
 console.log(`${20}, ${[0] == false}`)
 
+// Real-world form validator
+section ("PART B, test case 1 all case pass")
+// TEST CASE 1 all pass
+let newPassword = "Admin123456789"
+let confirmPassword = "Admin123456789"
+let currentEmail = "admin@gmail.com"
+let confirmEmail = "admin@gmail.com"
+
+let validatePassword = newPassword === confirmPassword; // this will be true including type
+
+let validateEmail = currentEmail === confirmEmail; // currentEmail and confirmEmail match EXACTLY
+
+let checkSimilarity = newPassword !== currentEmail; // newPassword is NOT the same as the current email 
+
+let newPasswordLength =  newPassword.length >= 8; //newPassword length is at least 8 characters
+
+console.log(`test1 password match: ${validatePassword ? "PASS" : "FAIL"}`);
+console.log(`test2 email match: ${validateEmail ? "PASS" : "FAIL"}`);
+console.log(`test3 similarity check: ${checkSimilarity ? "PASS" : "FAIL"}`);
+console.log(`test4 passwordLength check: ${newPasswordLength ? "PASS" : "FAIL"}`);
+
+section ("PART B, test case 2 two case fail")
+// TEST CASE 2 two case fail
+
+
+
+
+
+
+
+
+
+
+
+
+
+
