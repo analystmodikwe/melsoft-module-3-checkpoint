@@ -806,3 +806,23 @@ const finalTotalCents = totalCents - seniorDiscountCents;
 
 // FIX 13: divide by 100 only at the end, for display
 console.log("Total: R " + (finalTotalCents / 100).toLocaleString("en-US", money)); // R 775.19
+
+// Challenge 10 - Self-Reflection
+
+
+// 1. What's the difference between & and | versus && and ||?
+
+// The single ones, & and |, are bitwise operators. They look at two numbers
+// bit by bit and give me back a new number. The double ones, && and ||, are
+// logical operators. They treat each side as true or false, they return one
+// of the original values, and they short-circuit, so the right side is
+// sometimes never even looked at. The bug I can picture happening in
+// production is in a permission system like the one in Challenge 6. If I
+// write if (user && DELETE), JavaScript sees two truthy numbers and the
+// condition passes, so a read-only user would appear to have delete rights.
+// Nothing crashes and no error shows up, the wrong people just quietly get
+// access. The correct check is (user & DELETE) !== 0, which gives 0 for a
+// read-only user.
+
+
+
