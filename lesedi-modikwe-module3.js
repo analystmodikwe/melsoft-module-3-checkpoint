@@ -333,12 +333,24 @@ console.log(
     "F" 
 );
 
-section("Part B");
+section("Part B test 1");
+ // || uses the default when the left side is FALSY (undefined, null, "", 0, false)
+// ?? uses the default ONLY when the left side is null or undefined
 
+let user1 = {}; //an empty object, so every property is undefined
+let displayName1 = user1.displayName || "Guest User"; // undefined is falsy -> "Guest User"
+let theme1 = user1.theme || "light";                  // undefined is falsy -> "light"
+let maxResults1 = user1.maxResults || 10;             // undefined is falsy -> 10
+let lastLogin1 = user1.lastLogin ?? "Never";          // undefined -> "Never"
+let notificationCount1 = user1.notificationCount ?? 0; // undefined -> 0
 
+console.log("Test 1 displayName:", displayName1);           // Guest User
+console.log("Test 1 theme:", theme1);                       // light
+console.log("Test 1 maxResults:", maxResults1);             // 10
+console.log("Test 1 lastLogin:", lastLogin1);               // Never
+console.log("Test 1 notificationCount:", notificationCount1); // 0
 
-
-
+//  test 2
 
 
 
