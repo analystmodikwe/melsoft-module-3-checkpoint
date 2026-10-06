@@ -221,13 +221,30 @@ console.log(`test2 email match: ${validateEmail ? "PASS" : "FAIL"}`);
 console.log(`test3 similarity check: ${checkSimilarity ? "PASS" : "FAIL"}`);
 console.log(`test4 passwordLength check: ${newPasswordLength ? "PASS" : "FAIL"}`);
 
-section ("PART B, test case 2 two case fail")
-// TEST CASE 2 two case fail
+section ("PART B, test case 2, two case fail")
+// TEST CASE 2, two case fail
 
+newPassword = "Adm" //too short
+confirmPassword = "Ain129" //doesnt match
+currentEmail = "admin@gmail.com"
+confirmEmail = "admin@gmail.com"
 
+validatePassword = newPassword === confirmPassword; // this will be true including type
 
+validateEmail = currentEmail === confirmEmail; // currentEmail and confirmEmail match EXACTLY
 
+checkSimilarity = newPassword !== currentEmail; // newPassword is NOT the same as the current email 
 
+newPasswordLength =  newPassword.length >= 8; //newPassword length is at least 8 characters
+
+console.log(`test1 password match: ${validatePassword ? "PASS" : "FAIL"}`);
+console.log(`test2 email match: ${validateEmail ? "PASS" : "FAIL"}`);
+console.log(`test3 similarity check: ${checkSimilarity ? "PASS" : "FAIL"}`);
+console.log(`test4 passwordLength check: ${newPasswordLength ? "PASS" : "FAIL"}`);
+
+// I used === (strict equality). It compares both value and type, === guarantees the two passwords are exactly the same.
+
+section ()
 
 
 
