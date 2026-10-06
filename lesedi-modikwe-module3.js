@@ -111,7 +111,24 @@ let greating = "Welcome Back"+ " " + firstName + " " + lastName + " "+ "You Are"
 //  with template literals
 let greating2 = `Welcome Back ${firstName} ${lastName} You Are ${age}`
 
-// the one wiuth template literal is better because you avoiding using many + and empty string for indentation 
+// the one with template literal is better because you avoiding using many + and empty string for indentation 
+
+// Interview answer required at the end (comment block):
+// 1 What is the difference between prefix (++x) and postfix (x++) increment? Show it with a one-line code example where they produce different outputs.
+//  The (++x) prefix will perform the operation and return the new value
+let year = 2025;
+console.log(++year)
+// postfix (x++) perform the operation by changing the value but will return the value before change
+let year2 = 2025;
+console.log(year2++)
+
+// 2 The modulo operator (%) is one of the most-asked-about operators in interviews. Give THREE concrete, real-world uses for it. (One is even/odd, think of two more.)
+
+// 3 In your Challenge 1 Section 6 example, you nested a ternary. Is nested ternary good practice? When should you NOT use it?
+
+
+
+
    
 // a function to comment out the section header
 function section(title) {
