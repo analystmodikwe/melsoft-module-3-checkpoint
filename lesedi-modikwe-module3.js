@@ -1,3 +1,4 @@
+//Arithmetic (3 operators minimum, including modulo)
 // Calculating a worker's monthly net salary from a gross salary of R 45,000,
 // after deducting 25% tax, 1% UIF, and R 2,500 medical aid.
 
