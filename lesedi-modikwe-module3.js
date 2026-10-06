@@ -123,9 +123,12 @@ let year2 = 2025;
 console.log(year2++)
 
 // 2 The modulo operator (%) is one of the most-asked-about operators in interviews. Give THREE concrete, real-world uses for it. (One is even/odd, think of two more.)
+// when checking if a number is even or odd
+// creating a clock that resets after 12 hours
+// generating a sequence of numbers within a specific range
 
 // 3 In your Challenge 1 Section 6 example, you nested a ternary. Is nested ternary good practice? When should you NOT use it?
-
+//  no its not, nested ternary can make the code hard to read and understand, especially when there are multiple conditions. It is better to use if-else statements or switch cases for complex logic to improve readability and maintainability.
 
 
 
