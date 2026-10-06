@@ -78,6 +78,17 @@ let denyAccess1 = !isUserLoggedIn  // turn true to false so user will be deied a
 let denyAccess2 = !isEmailVerified // turn true to false so user will be deied access if email is not varified
 let denyAccess3 = !isUserAdmin // turn true to false so user will be denied access if they are not admin
 
+// Unary
+// Example scenario: Convert the string '25' from a form field into a number using the unary +
+// operator. Then toggle a boolean 'isDarkMode' flag using !
+
+let num = "25";
+let numToString = +num; // turning "25" to an number
+
+let isDarkMode = true; // the darkmode is on (true)
+    isDarkMode = !isDarkMode; // the darkmode is off (false)
+
+    isDarkMode = !isDarkMode //now its back on (true)
 
 
 
