@@ -97,8 +97,19 @@ let isDarkMode = true; // the darkmode is on (true)
 
 let membershipBadge = PremiumMemeber ? "Premium" : TrailMember ? "trail" : "Free Memeber";
 
+// . String concatenation (the + operator doing double duty)
+// Example scenario: Build a greeting that pulls firstName, lastName, and age from variables and
+// produces: 'Welcome back Thabo Nkosi, you are 28 years old.' Do this using the + operator for
+// concatenation. Then show the SAME greeting using a template literal and comment on which is
+// better and why
 
+let firstName  = "Thabo";
+let lastName = "Nkosi";
+let age = 28;
 
+let greating = "Welcome Back"+ " " + firstName + " " + lastName + " "+ "You Are" + " " + age;
+
+console.log(greating)
    
 // a function to comment out the section header
 function section(title) {
