@@ -95,7 +95,7 @@ let isDarkMode = true; // the darkmode is on (true)
 // 'premium', 'Free Member' otherwise. Then nest a ternary to also handle 'trial' as 'Trial
 // Member'
 
-let membershipBadge = PremiumMemeber ? "Premium" : TrailMember ? "trail" : "Free Memeber";
+// let membershipBadge = PremiumMemeber ? "Premium" : TrailMember ? "trail" : "Free Memeber";
 
 // . String concatenation (the + operator doing double duty)
 // Example scenario: Build a greeting that pulls firstName, lastName, and age from variables and
@@ -106,10 +106,12 @@ let membershipBadge = PremiumMemeber ? "Premium" : TrailMember ? "trail" : "Free
 let firstName  = "Thabo";
 let lastName = "Nkosi";
 let age = 28;
-
 let greating = "Welcome Back"+ " " + firstName + " " + lastName + " "+ "You Are" + " " + age;
 
-console.log(greating)
+//  with template literals
+let greating2 = `Welcome Back ${firstName} ${lastName} You Are ${age}`
+
+// the one wiuth template literal is better because you avoiding using many + and empty string for indentation 
    
 // a function to comment out the section header
 function section(title) {
