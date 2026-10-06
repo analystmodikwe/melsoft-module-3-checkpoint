@@ -72,11 +72,11 @@ let isUserLoggedIn = true;
 let isEmailVerified = true;
 let isUserAdmin = true;
 
-let userAccessCheck1 = isUserLoggedIn && isEmailVerified; //will check if the user is logged in and the email is verified
+let userAccessCheck1 = isUserLoggedIn && isEmailVerified; //will check if the user is logged in and the email is verified both are true
 let userAccessCheck2 = isUserAdmin || isEmailVerified;// will check if the user if admin and if true the whole statment will be true since its OR
 let denyAccess1 = !isUserLoggedIn  // turn true to false so user will be deied access if they are not logged in
 let denyAccess2 = !isEmailVerified // turn true to false so user will be deied access if email is not varified
-let denyAccess3 = !isUserAdmin // turn true to false so user will be deied access if they are not admin
+let denyAccess3 = !isUserAdmin // turn true to false so user will be denied access if they are not admin
 
 
 
