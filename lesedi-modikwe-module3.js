@@ -729,3 +729,34 @@ console.log("USD received: $" + (usdCents / 100).toLocaleString("en-US", money))
 //    display with toLocaleString (2 decimals).
 // 3. Scenario 2: the fee tiers use "<" on the balance, so a balance such
 //    as 999.99 or 4999.99 still lands in the correct tier.
+
+section("challenge9")
+// Bugs i found
+
+// 1. var item1Price = "199.99"; and var item2Price = "49.50"; are prices stored as strings, so they won't behave like numbers in a calculation.
+
+// 2. var quantity = "2"; is a string, so the script only works with it through hidden type coercion, which fails if the value is ever "2 " or "abc".
+
+// 3. var subtotal = item1Price + item2Price + item3Price * quantity; uses + on strings, so it joins them as text and produces "199.9949.50250" instead of adding.
+
+// 4. Same line: because * has higher priority than +, the quantity only multiplies the third item. It needs brackets, (item1Price + item2Price + item3Price) * quantity, if the quantity applies to the whole cart (I've assumed it does).
+
+// 5. var isLoggedIn = "true"; is a non-empty string, which is truthy, so even "false" would count as logged in.
+
+// 6. var discount = discountCode == "SAVE10" ? 0.1 : 0; uses loose ==, which converts types before comparing and can hide a mismatch, so it should be ===.
+
+// 7. var discountAmount = subtotal * discount; multiplies a text string by a number, which gives NaN, and that NaN then spreads through afterDiscount, vat and total.
+
+// 8. var vat = afterDiscount * 0.15; leaves a money value as an unrounded floating-point number (like 101.11230000000001) instead of rounding to whole cents.
+
+// 9. var canCheckout = isLoggedIn && customerAge > 18; has a truthy string on the left, so the login check is meaningless, and && returns whichever value it stops on rather than guaranteeing a true/false.
+
+// 10. Same line: customerAge > 18 quietly turns null into 0, so a missing age silently gives false with no way to tell "unknown" from "too young", and > 18 wrongly rejects people who are exactly 18 (it should be >= 18). The fix is (customerAge ?? 0).
+
+// 11. var seniorDiscount = customerAge >= 60 ? total * 0.05 : null; returns null instead of 0, so the value is the wrong type for a discount amount.
+
+// 12. var finalTotal = total - seniorDiscount; only works because JavaScript silently turns null into 0 in a subtraction, which is a hidden coercion that would break if the code changed.
+
+// 13. console.log("Total: R" + finalTotal.toFixed(2)); prints RNaN without any error, because NaN.toFixed(2) doesn't crash, so the bug stays hidden. The original output shows Total: RNaN.
+
+// 14. var is used for every variable. It isn't an operator bug, but const and let prevent accidental reassignment and are the modern standard.
