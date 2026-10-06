@@ -837,5 +837,31 @@ console.log("Total: R " + (finalTotalCents / 100).toLocaleString("en-US", money)
 // replaced it. I'd still use || when I want to treat empty values as
 // missing, like an empty theme string.
 
+ 
+// // 3. Why does typeof null return 'object', and how do I check for null safely?
 
+// From what I've read, it's a mistake from the very first version of
+// JavaScript. Values were stored with a small type tag, objects had the tag
+// 0, and null was stored as the "null pointer", which is all zeros, so the
+// check read it as an object. It was never fixed because fixing it would
+// break a huge amount of existing code on the web. To check for null
+// without being tricked, I use strict equality: value === null. That only
+// matches null itself. If I also want to catch undefined, I can use
+// value == null, but I prefer to be explicit and write
+// value === null || value === undefined, or just use ??.
+
+// 4. Why does 0.1 + 0.2 not equal 0.3, and what's the production fix?
+
+// Computers store numbers in binary, and some decimals can't be written
+// exactly in binary, the same way 1/3 can't be written exactly in decimal
+// (it becomes 0.3333 forever). 0.1 and 0.2 are stored as very close
+// approximations, and when I add them the tiny errors show up, giving
+// 0.30000000000000004. That's harmless for a game score but not for money,
+// because the cents can drift and add up over thousands of transactions.
+// As far as I understand, real systems don't store money as decimals at
+// all. They store it as whole numbers of the smallest unit, so R15.75 is
+// 1575 cents, and integers are exact. Databases also have a fixed-precision
+// DECIMAL type, and there are libraries for exact decimal maths. That's why
+// in my banking calculator I converted to cents first, rounded once, and
+// only divided by 100 when displaying the result.
 
