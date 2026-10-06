@@ -14,6 +14,7 @@ uif = uif * gross
 let net = gross - tax - uif - medicalAid;
 // console.log(net)
 
+// Assignment (at least 3 compound operators)
 //  A shopping cart total starts at 0. Three items are added at R 150, R 85, and R
 // 220. Then a 10% discount is applied, then 15% VAT. Using +=, *=, 
 let total = 0;
@@ -47,6 +48,7 @@ let item3VAT = item3
     item3VAT *= 15/100;
     item3 -= item3VAT
 
+//  Comparison
 // Example scenario: Validate a signup form. User must be at least 18 years old, password must
 // have at least 8 characters, and confirmed email must exactly match the typed email. Show all
 // four comparison operators that make sense here
