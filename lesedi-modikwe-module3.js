@@ -824,5 +824,18 @@ console.log("Total: R " + (finalTotalCents / 100).toLocaleString("en-US", money)
 // access. The correct check is (user & DELETE) !== 0, which gives 0 for a
 // read-only user.
 
+// 2. When would I use ?? instead of ||?
+
+// I'd use ?? whenever 0, an empty string or false are valid values that I
+// don't want to overwrite. The || operator replaces anything falsy, but ??
+// only replaces null and undefined. A good example is a volume setting. If
+// a user turns the volume down to 0 and I write settings.volume || 50, their
+// mute gets replaced with 50 and the app blasts sound at them. With
+// settings.volume ?? 50 the 0 stays, and the default only kicks in when the
+// setting really is missing. I saw the same thing in the profile
+// challenge, where notificationCount was 0 and || would have wrongly
+// replaced it. I'd still use || when I want to treat empty values as
+// missing, like an empty theme string.
+
 
 
