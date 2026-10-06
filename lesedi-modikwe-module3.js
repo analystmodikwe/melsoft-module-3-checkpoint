@@ -611,3 +611,11 @@ console.log("splice result:", items);    // [ 'a', 'c', 'd' ]
 const items2 = ["a", "b", "c", "d"];
 const filtered = items2.filter((item, index) => index !== 1); // keeps all except position 1
 console.log("filter result:", filtered); // [ 'a', 'c', 'd' ]
+
+
+// section Challenge 6
+//  will comeback to it 
+
+
+
+
