@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenge 8 - User Interaction</title>
+</head>
+<body>
+    <h1>Challenge 8 - User Interaction</h1>
+    <p>Reload the page to run the script again.</p>
+
+    <script>
+        // 1. Greet the user (alert only shows a message and waits for OK)
+        window.alert("Welcome to the Melsoft membership sign-up!");
+
+        // 2. Ask for the name.
+        // prompt returns null if the user clicks Cancel, and "" if they leave it blank.
+        // (nameInput || "") turns null into "", .trim() removes spaces, and
+        // || "Guest" then replaces any empty result with the default name.
+        let nameInput = window.prompt("What is your name?");
+        let name = (nameInput || "").trim() || "Guest";
+
+        // 3. Ask for the age. prompt always returns TEXT (or null), so convert it.
+        // Number(null) and Number("") both give 0, so Cancel and blank fail the 1-120 check.
+        // Number("abc") gives NaN, which isNaN() catches.
+        let ageInput = window.prompt("How old are you? (1 to 120)");
+        let age = Number(ageInput);
+        let isValidAge = !isNaN(age) && age >= 1 && age <= 120;
+
+        // 4. Ternary chain for the membership tier (checks from the lowest age up).
+        // If the age is not valid, the tier is "Unknown" so the script never crashes.
+        let tier = !isValidAge ? "Unknown" :
+                   age < 18    ? "Youth" :
+                   age < 60    ? "Adult" :
+                                 "Senior";
+
+        // 5. confirm shows OK / Cancel and returns true or false
+        let subscribed = window.confirm("Do you want to subscribe to our newsletter?");
+
+        // 6. Show a summary. \n starts a new line inside the alert box.
+        // Ternaries turn the values into readable text.
+        let ageText = isValidAge ? age : "Invalid age entered";
+        let newsletterText = subscribed ? "Subscribed" : "Not subscribed";
+
+        window.alert(
+            "Summary\n" +
+            "Name: " + name + "\n" +
+            "Age: " + ageText + "\n" +
+            "Membership tier: " + tier + "\n" +
+            "Newsletter: " + newsletterText
+        );
+    </script>
+</body>
+</html>
