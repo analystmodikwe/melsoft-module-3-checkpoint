@@ -16,6 +16,14 @@ console.log(net)
 //  A shopping cart total starts at 0. Three items are added at R 150, R 85, and R
 // 220. Then a 10% discount is applied, then 15% VAT. Using +=, *=, 
 let total = 0;
+
 let item1 = 150
 item1 += total;
-console.log(item1)
+
+let item2 = 85
+item2 += total;
+
+let item3 = 220
+item3 += total;
+console.log(item3)
+
