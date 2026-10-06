@@ -244,13 +244,74 @@ console.log(`test4 passwordLength check: ${newPasswordLength ? "PASS" : "FAIL"}`
 
 // I used === (strict equality). It compares both value and type, === guarantees the two passwords are exactly the same.
 
-section ()
+section ("Challenge 3 — Operator Precedence")
 
+//1, the answer will be 13  *comes first, + second, - last
+console.log(`${"1:"} ${2 + 3 * 4 - 1}`)
 
+// 2 , Order: brackets first, left one (2+3=5), right one (4-1=3), then * (5*3=15)
+console.log("2:", (2 + 3) * (4 - 1));
 
+// 3. Prediction: 4
+// Same priority, so left to right: (10-4=6), then (6-2=4)
+console.log("3:", 10 - 4 - 2);
 
+// 4. Prediction: 12
+// i was wrong , ** is right-associative, so the RIGHT one goes first: (3**2=9), then (2**9=512)
+console.log("4:", 2 ** 3 ** 2);
 
+// 5. Prediction: 3
+// % and * have the same priority, so left to right: (10%3=1), (1*2=2), then + (2+1=3)
+console.log("5:", 10 % 3 * 2 + 1);
 
+// 6. Prediction: 5
+// / is left to right: (100/4=25), then (25/5=5)
+console.log("6:", 100 / 4 / 5);
 
+// 7. Prediction: true
+// Order: + first (5+2=7), then comparisons (7>6 is true, 3<4 is true), then && (true && true = true)
+console.log("7:", 5 + 2 > 6 && 3 < 4);
+
+// 8. Prediction: true
+// && beats ||, so: (true && false = false), (true && true = true), then || (false || true = true)
+console.log("8:", true && false || true && true);
+
+// 9. Prediction: false
+// ! goes first: !false = true, and !!0 is !(!0), so !0 = true, !true = false
+// Then && (true && false = false)
+console.log("9:", !false && !!0);
+
+// 10. Prediction: true
+// Comparisons first: 5>3 is true, 10<20 is true, 2==="2" is false (different types)
+// Then ! flips it (!false = true), then && (true && true = true), then || (true || true = true)
+console.log("10:", 5 > 3 && 10 < 20 || !(2 === "2"));
+
+// 11. Prediction: 1035
+// * is left to right: (1000*1.15=1150), then (1150*0.9=1035)
+// Order matters for rounding in real money code (decimals can drift slightly)
+console.log("11:", 1000 * 1.15 * 0.9);
+
+// 12. Prediction: "number1"
+// typeof is a unary operator, so it goes BEFORE +: typeof 5 = "number"
+// Then + joins the text: "number" + 1 = "number1"
+console.log("12:", typeof 5 + 1);
+
+// 13. Prediction: "number"
+// Brackets first (5+1=6), then typeof 6 = "number"
+console.log("13:", typeof (5 + 1));
+
+// 14. Prediction: "56"
+// * first (3*2=6), then + with a string joins them: "5" + 6 = "56"
+console.log("14:", "5" + 3 * 2);
+
+// 15. Prediction: 4
+// Left to right: "5" - 3 forces a number (5-3=2), then 2 + 2 = 4
+console.log("15:", "5" - 3 + 2);
+
+// I would add parentheses even when precedence rules would work, because code is read
+// far more often than it is written. Brackets make my intent obvious to other
+// developers and to me in six months, especially when mixing && with || or
+// mixing + with string joining. They also protect against bugs if someone
+// edits the expression later and misremembers the precedence order.
 
 
