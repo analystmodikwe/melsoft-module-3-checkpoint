@@ -512,3 +512,46 @@ console.log("10:", typeof undeclaredVariable);
 // Array.isArray() returns true only for real arrays
 console.log("Array.isArray([]):", Array.isArray([]));   // true
 console.log("Array.isArray({}):", Array.isArray({}));   // false
+
+section("PART B");
+
+// instanceof checks whether a value was created by a certain type (constructor)
+// and returns true or false
+
+// 1. Prediction: true
+console.log("1:", [] instanceof Array);
+
+// 2. Prediction: true
+// Arrays are objects, so they are an instance of Object as well
+console.log("2:", [] instanceof Object);
+
+// 3. Prediction: true
+console.log("3:", {} instanceof Object);
+
+// 4. Prediction: false
+// "hello" is a primitive (a plain value), not an object created with String
+console.log("4:", "hello" instanceof String);
+
+// 5. Prediction: true
+// new String() creates a String OBJECT, so instanceof works
+console.log("5:", new String("hello") instanceof String);
+
+// 6. Prediction: false
+// 42 is a primitive number, not an object, so the same rule as number 4 applies
+console.log("6:", 42 instanceof Number);
+
+// 7. Prediction: true
+console.log("7:", new Date() instanceof Date);
+
+// 8. Prediction: true
+console.log("8:", /abc/ instanceof RegExp);
+
+// ONE case where typeof is right and instanceof is wrong:
+// Checking primitives (strings, numbers, booleans). typeof "hello" gives
+// "string", but "hello" instanceof String is false, so instanceof gives
+// the wrong answer for primitives.
+
+// ONE case where instanceof is right and typeof is wrong:
+// Telling kinds of objects apart (arrays, dates, regular expressions).
+// typeof gives "object" for all of them, but instanceof can tell that
+// new Date() is a Date and /abc/ is a RegExp.
