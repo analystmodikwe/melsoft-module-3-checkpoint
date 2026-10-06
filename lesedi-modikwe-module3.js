@@ -12,3 +12,10 @@ uif = uif * gross
 
 let net = gross - tax - uif - medicalAid;
 console.log(net)
+
+//  A shopping cart total starts at 0. Three items are added at R 150, R 85, and R
+// 220. Then a 10% discount is applied, then 15% VAT. Using +=, *=, 
+let total = 0;
+let item1 = 150
+item1 += total;
+console.log(item1)
