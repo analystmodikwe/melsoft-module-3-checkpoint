@@ -64,8 +64,19 @@ let passwordNotLong = password.length <= 25 //the password wont be more than 25 
 let userEmail = email === confirmedEmail; // the email and confirmed email will be exactly the same
 let passwordNotEmail = password !== email; // strictly not equal, password and email wont be the same
 
+// Logical
+// A user can access the premium dashboard IF (they are logged in AND their
+// email is verified) OR (they are an admin)
 
+let isUserLoggedIn = true;
+let isEmailVerified = true;
+let isUserAdmin = true;
 
+let userAccessCheck1 = isUserLoggedIn && isEmailVerified; //will check if the user is logged in and the email is verified
+let userAccessCheck2 = isUserAdmin || isEmailVerified;// will check if the user if admin and if true the whole statment will be true since its OR
+let denyAccess1 = !isUserLoggedIn  // turn true to false so user will be deied access if they are not logged in
+let denyAccess2 = !isEmailVerified // turn true to false so user will be deied access if email is not varified
+let denyAccess3 = !isUserAdmin // turn true to false so user will be deied access if they are not admin
 
 
 
