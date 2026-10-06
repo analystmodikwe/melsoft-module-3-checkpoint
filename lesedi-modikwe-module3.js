@@ -710,3 +710,22 @@ let usdCents = Math.round(afterCommissionCents / rate); // 83369 cents
 console.log("Commission: R " + (commissionCents / 100).toLocaleString("en-US", money));         // R 393.76
 console.log("After commission: R " + (afterCommissionCents / 100).toLocaleString("en-US", money)); // R 15,356.57
 console.log("USD received: $" + (usdCents / 100).toLocaleString("en-US", money));  
+
+// Computers store decimals in binary, and many decimals (like 0.1, 0.2
+// or 0.025) cannot be stored exactly, so tiny errors appear:
+// 0.1 + 0.2 gives 0.30000000000000004, and in my own code
+// 15750.33 * 0.025 gives 393.75825000000003 instead of 393.75825.
+// A tiny error like this can push a rounded money value up or down by
+// a cent, and those cents add up across thousands of transactions.
+//
+// Where it showed up:
+// 1. Scenario 3 (the clearest case): commission and conversion on a
+//    decimal amount. I handled it by working in whole cents (integers),
+//    using Math.round to get exact cents, and only converting back to
+//    rand and dollars when printing.
+// 2. Scenario 1: the compound interest formula uses a decimal power, so
+//    the result has many digits (31286.153387860195). I did NOT round in
+//    the middle of the calculation. I rounded only once, at the end, for
+//    display with toLocaleString (2 decimals).
+// 3. Scenario 2: the fee tiers use "<" on the balance, so a balance such
+//    as 999.99 or 4999.99 still lands in the correct tier.
