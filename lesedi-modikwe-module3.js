@@ -760,3 +760,49 @@ section("challenge9")
 // 13. console.log("Total: R" + finalTotal.toFixed(2)); prints RNaN without any error, because NaN.toFixed(2) doesn't crash, so the bug stays hidden. The original output shows Total: RNaN.
 
 // 14. var is used for every variable. It isn't an operator bug, but const and let prevent accidental reassignment and are the modern standard.
+
+section("corrected script")
+// === CORRECTED CART SCRIPT ===
+
+const moneyR = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+
+// FIX 1, 2, 5, 14: real numbers and booleans, const for values that never change.
+// Prices are stored in whole CENTS (integers) so the maths is exact (fix 8).
+const item1PriceCents = 19999;  // R199.99
+const item2PriceCents = 4950;   // R49.50
+const item3PriceCents = 12500;  // R125.00
+const quantity = 2;             // a number, not "2"
+const discountCode = "SAVE10";
+const isLoggedIn = true;        // a real boolean, not "true"
+let customerAge = null;         // unknown age
+
+// FIX 3 + 4: all prices are numbers so + adds them, and the brackets
+// make the quantity multiply the WHOLE cart, not just item 3
+const subtotalCents = (item1PriceCents + item2PriceCents + item3PriceCents) * quantity;
+console.log("Subtotal: R " + (subtotalCents / 100).toLocaleString("en-US", money)); // R 748.98
+
+// FIX 6: === compares value AND type. The discount is stored as a percent,
+// so the later maths avoids decimals like 0.1
+const discountPercent = discountCode === "SAVE10" ? 10 : 0;
+
+// FIX 7 + 8: every value is a number now, so no NaN, and Math.round
+// keeps each step in whole cents
+const discountCents = Math.round(subtotalCents * discountPercent / 100);
+const afterDiscountCents = subtotalCents - discountCents;
+const vatCents = Math.round(afterDiscountCents * 15 / 100); // 15% VAT
+const totalCents = afterDiscountCents + vatCents;
+
+// FIX 10: ?? replaces a missing (null/undefined) age with 0 on purpose,
+// and >= 18 now includes people who are exactly 18
+const ageKnown = customerAge ?? 0;
+
+// FIX 9: === true checks a real boolean, and && now gives a true/false result
+const canCheckout = isLoggedIn === true && ageKnown >= 18;
+console.log("Can checkout?", canCheckout); // false (age is unknown)
+
+// FIX 11 + 12: the "no discount" case is 0, not null, so the subtraction is honest
+const seniorDiscountCents = ageKnown >= 60 ? Math.round(totalCents * 5 / 100) : 0;
+const finalTotalCents = totalCents - seniorDiscountCents;
+
+// FIX 13: divide by 100 only at the end, for display
+console.log("Total: R " + (finalTotalCents / 100).toLocaleString("en-US", money)); // R 775.19
