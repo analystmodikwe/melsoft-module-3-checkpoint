@@ -650,3 +650,38 @@ console.log("Final balance: R " + finalBalance.toLocaleString("en-US", money)); 
 console.log("Interest earned: R " + interestEarned.toLocaleString("en-US", money)); // R 6,286.15
 console.log("Effective annual rate: " + effectiveRate.toFixed(2) + "%");            // 7.76%
 
+// Scenario 2 - Tiered account fees (ternary only)
+
+section("Scenario 2 - Tiered account fees");
+
+// ONE ternary chain decides the fee. It checks from the lowest tier up,
+// and the first true condition wins:
+//   balance < 1000  -> R25
+//   balance < 5000  -> R50
+//   balance < 25000 -> R75
+//   otherwise       -> R0 (fee waived)
+// Using "<" (not "<=") means balances with cents, like 999.99, land in the right tier.
+
+let balance1 = 500;
+let fee1 = balance1 < 1000 ? 25 : balance1 < 5000 ? 50 : balance1 < 25000 ? 75 : 0;
+let annualFee1 = fee1 * 12; // 12 months of fees
+console.log("Balance R " + balance1.toLocaleString("en-US", money) + " -> monthly fee R" + fee1 + ", yearly R" + annualFee1);
+// Balance R 500.00 -> monthly fee R25, yearly R300
+
+let balance2 = 1500;
+let fee2 = balance2 < 1000 ? 25 : balance2 < 5000 ? 50 : balance2 < 25000 ? 75 : 0;
+let annualFee2 = fee2 * 12;
+console.log("Balance R " + balance2.toLocaleString("en-US", money) + " -> monthly fee R" + fee2 + ", yearly R" + annualFee2);
+// Balance R 1,500.00 -> monthly fee R50, yearly R600
+
+let balance3 = 10000;
+let fee3 = balance3 < 1000 ? 25 : balance3 < 5000 ? 50 : balance3 < 25000 ? 75 : 0;
+let annualFee3 = fee3 * 12;
+console.log("Balance R " + balance3.toLocaleString("en-US", money) + " -> monthly fee R" + fee3 + ", yearly R" + annualFee3);
+// Balance R 10,000.00 -> monthly fee R75, yearly R900
+
+let balance4 = 50000;
+let fee4 = balance4 < 1000 ? 25 : balance4 < 5000 ? 50 : balance4 < 25000 ? 75 : 0;
+let annualFee4 = fee4 * 12;
+console.log("Balance R " + balance4.toLocaleString("en-US", money) + " -> monthly fee R" + fee4 + ", yearly R" + annualFee4);
+// Balance R 50,000.00 -> monthly fee R0, yearly R0
