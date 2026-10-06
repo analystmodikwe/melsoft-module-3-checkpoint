@@ -158,4 +158,23 @@ console.log("0" == 0);
 // 6 false because the value is the same but  the data type is different and === expects value and data type to be the same 
 console.log("0" === 0);
 
-// 7 true because 
+// 7 true because null is just zero and undefined has no value so its also zero even though they are different types == will read them as 0
+console.log(null == undefined);
+
+// 8 false because null and undefined are off different types 
+console.log(null === undefined);
+
+// 9 true, because null is 0 == will read both as zero
+console.log(`${9}, ${null == 0}`) // i was wrong here, the answer is false, because javascript doest convert null into a number when using ==
+
+// 10 true because i am using relational operator and it turns null to a number
+console.log(`${10}, ${null >= 0}`)
+
+// 11 false because i am using relational operator and it turns null to a number so it will be zero and zero is not greater than zero but equals to
+console.log(`${11}, ${null > 0}`)
+
+// 12 false because NaN cannnot be equal to itself it represents an invalid or undefined numeric result.
+console.log(`${12}, ${NaN == NaN}`)
+
+// 13 false because NaN cannnot be equal to itself it represents an invalid or undefined numeric result.
+console.log(`${13}, ${NaN === NaN}`)
